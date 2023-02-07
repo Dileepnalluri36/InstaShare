@@ -97,7 +97,7 @@ class LoginForm extends Component {
     }
     return (
       <div className="login-container">
-        <p>hi</p>
+        <p>Hello</p>
       </div>
     )
   }

@@ -32,13 +32,12 @@ class UserStories extends Component {
     const response = await fetch(apiUrl, options)
     if (response.ok === true) {
       const data = await response.json()
-      console.log(data)
       const updatedData = data.users_stories.map(eachStory => ({
         userName: eachStory.user_name,
         userId: eachStory.user_id,
         storyUrl: eachStory.story_url,
       }))
-      console.log(updatedData)
+
       this.setState({
         apiStatus: apiStatusConstants.success,
         storiesList: updatedData,
@@ -49,7 +48,7 @@ class UserStories extends Component {
   }
 
   renderLoadingView = () => (
-    <div className="loader-container" testid="loader">
+    <div className="user-story-loader-container" testid="loader">
       <Loader type="TailSpin" color="#4094EF" height={50} width={50} />
     </div>
   )
@@ -62,7 +61,7 @@ class UserStories extends Component {
       infinite: false,
       speed: 500,
       slidesToShow: 5,
-      slidesToScroll: 0,
+      slidesToScroll: 3,
       initialSlide: 0,
       responsive: [
         {
@@ -120,7 +119,11 @@ class UserStories extends Component {
       <h1 className="failure_heading">
         Something went wrong. Please try again
       </h1>
-      <button type="submit" className="failure-button">
+      <button
+        onClick={() => this.getUserStories()}
+        type="submit"
+        className="failure-button"
+      >
         Try Again
       </button>
     </div>

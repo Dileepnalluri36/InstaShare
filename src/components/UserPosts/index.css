@@ -1,0 +1,256 @@
+@media screen and (min-width: 768px) {
+  .posts_list_container {
+    width: 100%;
+    list-style: none;
+    margin: auto;
+    font-family: Roboto;
+  }
+  .post_item_container {
+    padding-left: 0;
+    list-style-type: none;
+    margin: 10px auto;
+    border: 1px solid #dbdbdb;
+    border-radius: 10px;
+  }
+
+  .profile_div {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin-left: 30px;
+    padding-top: 20px;
+  }
+
+  .profile_pic {
+    width: 40px;
+    height: 40px;
+    left: 26px;
+    top: 16px;
+    border-radius: 50%;
+  }
+
+  .profileName {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+
+    color: #262626;
+  }
+
+  .postImage {
+    padding-top: 10px;
+    height: 614px;
+    width: 100%;
+  }
+  .social_div {
+    margin-top: 20px;
+    margin-left: 30px;
+    display: flex;
+    gap: 20px;
+  }
+  .icon_button {
+    border-style: none;
+    background-color: transparent;
+  }
+  .icon {
+    font-size: 23px;
+  }
+
+  .likes {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    /* identical to box height, or 129% */
+
+    display: flex;
+    align-items: center;
+
+    color: #262626;
+    margin-left: 30px;
+  }
+  .caption {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    /* identical to box height, or 129% */
+
+    display: flex;
+    align-items: center;
+
+    color: #262626;
+    margin-left: 30px;
+  }
+  .comments_container {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    padding-left: 0;
+  }
+
+  .comment_item {
+    display: flex;
+    gap: 20px;
+  }
+
+  .commentUSerName {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  .comment {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 400;
+    font-size: 14px;
+  }
+
+  .createdAt {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    /* identical to box height, or 129% */
+
+    display: flex;
+    align-items: center;
+
+    color: #989898;
+    margin-left: 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .posts_list_container {
+    width: 100%;
+    list-style: none;
+    padding-left: 0;
+    font-family: Roboto;
+  }
+  .post_item_container {
+    padding-left: 0;
+    list-style-type: none;
+    margin: 10px auto;
+    border: 1px solid #dbdbdb;
+    border-radius: 10px;
+  }
+
+  .profile_div {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin-left: 30px;
+    padding-top: 20px;
+  }
+
+  .profile_pic {
+    width: 40px;
+    height: 40px;
+    left: 26px;
+    top: 16px;
+    border-radius: 50%;
+    padding: 2px;
+    border: 1px solid #e20337;
+  }
+
+  .profileName {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+
+    color: #262626;
+  }
+
+  .postImage {
+    padding-top: 10px;
+    height: 375px;
+  }
+  .social_div {
+    margin-top: 20px;
+    margin-left: 30px;
+    display: flex;
+    gap: 10px;
+  }
+  .icon_button {
+    border-style: none;
+    background-color: transparent;
+  }
+  .icon {
+    font-size: 20px;
+  }
+
+  .likes {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.07px;
+    color: #262626;
+    margin-left: 30px;
+  }
+  .caption {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    /* or 133% */
+
+    letter-spacing: -0.07px;
+
+    color: #262626;
+    margin-left: 30px;
+  }
+  .comments_container {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    padding-left: 0;
+  }
+
+  .comment_item {
+    display: flex;
+    gap: 20px;
+  }
+
+  .commentUSerName {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    /* identical to box height, or 133% */
+
+    letter-spacing: -0.1px;
+
+    color: #262626;
+  }
+  .comment {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.1px;
+    color: #262626;
+  }
+
+  .createdAt {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 16px;
+    /* identical to box height, or 160% */
+    letter-spacing: 0.05px;
+    color: #989898;
+    margin-left: 30px;
+    margin-top: 0;
+  }
+}

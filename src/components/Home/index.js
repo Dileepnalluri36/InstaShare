@@ -2,6 +2,7 @@ import {Component} from 'react'
 import Header from '../Header'
 import UserStories from '../UserStories'
 import './index.css'
+import UserPosts from '../UserPosts'
 
 class Home extends Component {
   state = {apiStatus: ''}
@@ -11,6 +12,7 @@ class Home extends Component {
       <div className="home_container">
         <Header />
         <UserStories />
+        <UserPosts />
       </div>
     )
   }

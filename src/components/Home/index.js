@@ -1,6 +1,6 @@
 import {Component} from 'react'
 import Header from '../Header'
-
+import UserStories from '../UserStories'
 import './index.css'
 
 class Home extends Component {
@@ -10,6 +10,7 @@ class Home extends Component {
     return (
       <div className="home_container">
         <Header />
+        <UserStories />
       </div>
     )
   }

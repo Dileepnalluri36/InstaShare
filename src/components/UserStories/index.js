@@ -60,7 +60,7 @@ class UserStories extends Component {
       dots: false,
       infinite: false,
       speed: 500,
-      slidesToShow: 5,
+      slidesToShow: 6,
       slidesToScroll: 3,
       initialSlide: 0,
       responsive: [

@@ -3,7 +3,7 @@ import './index.css'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import {BsHeart} from 'react-icons/bs'
-import {HiShare} from 'react-icons/hi'
+import {BiShareAlt} from 'react-icons/bi'
 import {FaRegComment} from 'react-icons/fa'
 import {Component} from 'react'
 
@@ -65,7 +65,7 @@ class UserPosts extends Component {
     <div className="failure_view_container">
       <img
         src="https://res.cloudinary.com/dziwdneks/image/upload/v1675775097/alert-triangle_cyhzqu.png"
-        alt="failure home"
+        alt="failure view"
       />
       <h1 className="failure_heading">
         Something went wrong. Please try again
@@ -91,7 +91,7 @@ class UserPosts extends Component {
             commentUserId: eachComment.user_id,
             commentUserName: eachComment.user_name,
           }))
-          console.log(updatedComments)
+
           return (
             <li key={eachPost.postId} className="post_item_container">
               <div className="profile_div">
@@ -104,14 +104,22 @@ class UserPosts extends Component {
               </div>
               <img src={eachPost.postImage} alt="post" className="postImage" />
               <div className="social_div">
-                <button type="button" className="icon_button">
+                <button testid="likeIcon" type="button" className="icon_button">
                   <BsHeart className="icon" />
                 </button>
-                <button type="button" className="icon_button">
+                <button
+                  testid="commentIcon"
+                  type="button"
+                  className="icon_button"
+                >
                   <FaRegComment className="icon" />
                 </button>
-                <button type="button" className="icon_button">
-                  <HiShare className="icon" />
+                <button
+                  testid="shareIcon"
+                  type="button"
+                  className="icon_button"
+                >
+                  <BiShareAlt className="icon" />
                 </button>
               </div>
               <p className="likes">{eachPost.likesCount} likes</p>

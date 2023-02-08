@@ -5,8 +5,6 @@ import './index.css'
 import UserPosts from '../UserPosts'
 
 class Home extends Component {
-  state = {apiStatus: ''}
-
   render() {
     return (
       <div className="home_container">

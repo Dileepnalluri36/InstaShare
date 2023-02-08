@@ -1,11 +1,13 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable react/no-unknown-property */
 import './index.css'
 import Cookies from 'js-cookie'
+import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 import {BsHeart} from 'react-icons/bs'
 import {BiShareAlt} from 'react-icons/bi'
 import {FaRegComment} from 'react-icons/fa'
-import {Component} from 'react'
+import SearchContext from '../../context/SearchContext'
 
 const apiStatusConstants = {
   initial: 'INITIAL',
@@ -34,7 +36,6 @@ class UserPosts extends Component {
     const response = await fetch(apiUrl, options)
     if (response.ok === true) {
       const data = await response.json()
-      console.log(data)
       const updatedData = data.posts.map(eachPost => ({
         postId: eachPost.post_id,
         createdAt: eachPost.created_at,
@@ -64,20 +65,93 @@ class UserPosts extends Component {
   renderFailureView = () => (
     <div className="failure_view_container">
       <img
+        className="failure_img"
         src="https://res.cloudinary.com/dziwdneks/image/upload/v1675775097/alert-triangle_cyhzqu.png"
         alt="failure view"
       />
-      <h1 className="failure_heading">
-        Something went wrong. Please try again
-      </h1>
+      <p className="failure_heading">Something went wrong. Please try again</p>
       <button
         onClick={() => this.getUserPosts()}
         type="submit"
         className="failure-button"
       >
-        Try Again
+        Try again
       </button>
     </div>
+  )
+
+  noSearchResults = () => (
+    <div className="no-results-container">
+      <img
+        className="no-results-img"
+        src="https://res.cloudinary.com/dziwdneks/image/upload/v1675513323/SearchNotFound_ntqrqa.png"
+        alt="search not found"
+      />
+      <h1 className="no-results-heading">Search Not Found</h1>
+      <p className="no-results-para">Try different keyword or search again</p>
+    </div>
+  )
+
+  renderSearchPosts = postsData => (
+    <>
+      <ul className="posts_list_container">
+        <h1 className="searchResultsHeading">Search Results</h1>
+        {postsData.map(eachPost => {
+          const {comments} = eachPost
+          const updatedComments = comments.map(eachComment => ({
+            comment: eachComment.comment,
+            commentUserId: eachComment.user_id,
+            commentUserName: eachComment.user_name,
+          }))
+
+          return (
+            <li key={eachPost.postId} className="post_item_container">
+              <div className="profile_div">
+                <img
+                  src={eachPost.profilePic}
+                  alt="post author profile"
+                  className="profile_pic"
+                />
+                <p className="profileName">{eachPost.userName}</p>
+              </div>
+              <img src={eachPost.postImage} alt="post" className="postImage" />
+              <div className="social_div">
+                <button testid="likeIcon" type="button" className="icon_button">
+                  <BsHeart className="icon" />
+                </button>
+                <button
+                  testid="commentIcon"
+                  type="button"
+                  className="icon_button"
+                >
+                  <FaRegComment className="icon" />
+                </button>
+                <button
+                  testid="shareIcon"
+                  type="button"
+                  className="icon_button"
+                >
+                  <BiShareAlt className="icon" />
+                </button>
+              </div>
+              <p className="likes">{eachPost.likesCount} likes</p>
+              <p className="caption">{eachPost.postCaption}</p>
+              <ul className="comments_container">
+                {updatedComments.map(eachComment => (
+                  <li className="comment_item" key={eachComment.commentUserId}>
+                    <span className="commentUSerName">
+                      {eachComment.commentUserName}
+                    </span>
+                    <p className="comment">{eachComment.comment}</p>
+                  </li>
+                ))}
+              </ul>
+              <p className="createdAt">{eachPost.createdAt}</p>
+            </li>
+          )
+        })}
+      </ul>
+    </>
   )
 
   renderSuccessView = () => {
@@ -127,9 +201,9 @@ class UserPosts extends Component {
               <ul className="comments_container">
                 {updatedComments.map(eachComment => (
                   <li className="comment_item" key={eachComment.commentUserId}>
-                    <p className="commentUSerName">
+                    <span className="commentUSerName">
                       {eachComment.commentUserName}
-                    </p>
+                    </span>
                     <p className="comment">{eachComment.comment}</p>
                   </li>
                 ))}
@@ -140,6 +214,20 @@ class UserPosts extends Component {
         })}
       </ul>
     )
+  }
+
+  renderConditionForSearchResults = (
+    isFailure,
+    isSearchButtonClicked,
+    postsData,
+  ) => {
+    if (!isFailure && isSearchButtonClicked) {
+      if (postsData.length > 0) {
+        return this.renderSearchPosts(postsData)
+      }
+      return this.noSearchResults()
+    }
+    return null
   }
 
   renderUserPosts = () => {
@@ -157,7 +245,32 @@ class UserPosts extends Component {
   }
 
   render() {
-    return <div className="posts-container">{this.renderUserPosts()}</div>
+    return (
+      <SearchContext.Consumer>
+        {value => {
+          const {
+            searchText,
+            isSearchButtonClicked,
+            setLoading,
+            postsData,
+            isFailure,
+          } = value
+
+          return (
+            <div className="posts-container">
+              {searchText === '' && this.renderUserPosts()}
+              {setLoading && this.renderLoadingView()}
+              {this.renderConditionForSearchResults(
+                isFailure,
+                isSearchButtonClicked,
+                postsData,
+              )}
+              {isFailure && this.renderFailureView()}
+            </div>
+          )
+        }}
+      </SearchContext.Consumer>
+    )
   }
 }
 

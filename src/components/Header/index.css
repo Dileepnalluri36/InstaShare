@@ -157,6 +157,18 @@
     gap: 40px;
   }
 
+  a {
+    color: #262626;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  a:active,
+  a:focus {
+    color: #4094ef;
+    font-weight: 500;
+  }
+
   .search_div {
     width: 214px;
     height: 28px;
@@ -174,6 +186,7 @@
     outline: none;
     padding: 5px;
     font-family: Roboto;
+    width: 180px;
   }
   .searchButton {
     background: #dbdbdb;

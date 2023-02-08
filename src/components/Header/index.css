@@ -179,6 +179,7 @@
     border-radius: 3px;
     display: flex;
     justify-content: space-between;
+    margin-left: 70px;
   }
   .searchBar {
     background-color: transparent;

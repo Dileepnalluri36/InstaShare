@@ -1,0 +1,226 @@
+@media screen and (max-width: 767px) {
+  .main_container {
+    width: 90%;
+    margin: auto;
+    font-family: Roboto;
+  }
+  .my_profile_large_container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .myProfileName {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
+    color: #262626;
+    transform: translateY(-80px);
+  }
+  .myProfilePic {
+    height: 96px;
+    width: 96px;
+    transform: translateY(60px);
+  }
+
+  .my_profile_div {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+  }
+  .text {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  .count {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .count_div {
+    display: flex;
+    gap: 20px;
+    transform: translate(130px, -70px);
+  }
+
+  .my_profile_user_id {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    transform: translateY(-70px);
+  }
+
+  .my_profile_bioText {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    transform: translateY(-90px);
+  }
+
+  .my_profile_stories_container {
+    display: flex;
+    gap: 20px;
+    padding-left: 0;
+    list-style: none;
+    transform: translateY(-90px);
+  }
+  .storyImg {
+    height: 56px;
+    width: 56px;
+    border-radius: 50%;
+    border: 1px solid #dbdbdb;
+    padding: 3px;
+  }
+
+  .posts_heading_div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transform: translateY(-90px);
+  }
+  .gridIcon {
+    height: 16.875px;
+    width: 16.875px;
+    left: 3px;
+    top: 3px;
+    border-radius: 0px;
+  }
+  .posts_heading {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: #262626;
+  }
+
+  .my_profile_posts_container {
+    display: flex;
+    gap: 6px;
+    list-style: none;
+    padding-left: 0;
+    justify-content: flex-start;
+    transform: translateY(-90px);
+  }
+  .my_profile_post {
+    height: 118px;
+    width: 118px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .main_container {
+    width: 75%;
+    margin: auto;
+    font-family: Roboto;
+  }
+  .my_profile_mobile_container {
+    display: none;
+  }
+  .my_profile_large_container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .myProfilePic {
+    height: 180px;
+    width: 180px;
+    border-radius: 90px;
+    align-self: flex-start;
+  }
+
+  .my_profile_div {
+    padding-top: 0;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
+  }
+
+  .myProfileName {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 32px;
+    color: #262626;
+    margin-top: 0;
+  }
+
+  .count_div {
+    display: flex;
+    gap: 30px;
+    margin-top: 0;
+  }
+  .text {
+    margin-top: 0;
+  }
+  .count {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #262626;
+  }
+
+  .my_profile_user_id {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #262626;
+    margin-top: 0;
+  }
+  .my_profile_bioText {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #262626;
+    margin-top: 0;
+  }
+  .my_profile_stories_container {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+  .storyImg {
+    height: 78px;
+    width: 78px;
+    border-radius: 50%;
+    border: 1px solid #dbdbdb;
+    padding: 3px;
+  }
+
+  .posts_heading_div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .gridIcon {
+    height: 16.875px;
+    width: 16.875px;
+    left: 3px;
+    top: 3px;
+    border-radius: 0px;
+  }
+  .posts_heading {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+    color: #262626;
+  }
+
+  .my_profile_posts_container {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    padding-left: 0;
+    justify-content: flex-start;
+  }
+  .my_profile_post {
+    height: 330px;
+    width: 330px;
+  }
+}

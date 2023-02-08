@@ -211,6 +211,7 @@
     list-style: none;
     padding-left: 0;
     font-family: Roboto;
+    padding-top: 20px;
   }
   .post_item_container {
     padding-left: 0;
@@ -286,14 +287,15 @@
     line-height: 18px;
     display: flex;
     align-items: center;
-
     color: #262626;
   }
 
   .postImage {
     padding-top: 10px;
     height: 375px;
+    width: 100%;
   }
+
   .social_div {
     margin-top: 20px;
     margin-left: 30px;

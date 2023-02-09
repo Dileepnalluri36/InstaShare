@@ -99,29 +99,6 @@ class MyProfile extends Component {
             <p className="user_profile_bioText">{userBio}</p>
           </div>
         </div>
-
-        {/* <div className="my_profile_mobile_container">
-          <h1 className="myProfileName">{userName}</h1>
-          <div className="my_profile_div">
-            <img src={profilePic} alt="my profile" className="myProfilePic" />
-            <div className="count_div">
-              <p className="text">
-                <span className="count">{postsCount} </span>
-                posts
-              </p>
-              <p className="text">
-                <span className="count">{followersCount} </span>
-                followers
-              </p>
-              <p className="text">
-                <span className="count">{followingCount} </span>
-                following
-              </p>
-            </div>
-          </div>
-          <p className="my_profile_user_id">{userId}</p>
-          <p className="my_profile_bioText">{userBio}</p>
-        </div> */}
         <ul className="user_profile_stories_container">
           {stories.map(eachStory => (
             <li key={eachStory.id}>

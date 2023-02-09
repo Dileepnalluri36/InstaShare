@@ -113,7 +113,7 @@ class UserStories extends Component {
     <div className="failure_view_container">
       <img
         src="https://res.cloudinary.com/dziwdneks/image/upload/v1675454266/HomeFaillureImg_qz05si.png"
-        alt="failure_img"
+        alt="failure view"
         className="user_story_failure_img"
       />
       <h1 className="failure_heading">

@@ -51,7 +51,6 @@ const Header = props => {
           }
           const response = await fetch(apiUrl, options)
           const data = await response.json()
-          console.log(data)
           if (response.ok === true) {
             const updatedData = data.posts.map(eachPost => ({
               postId: eachPost.post_id,

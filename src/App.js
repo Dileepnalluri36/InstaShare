@@ -1,4 +1,4 @@
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 import {Component} from 'react'
 import LoginForm from './components/LoginForm'
 import Home from './components/Home'
@@ -6,6 +6,7 @@ import SearchContext from './context/SearchContext'
 import ProtectedRoute from './components/ProtectedRoute'
 import MyProfile from './components/MyProfile'
 import UserProfile from './components/UserProfile'
+import NotFound from './components/NotFound'
 import './App.css'
 
 class App extends Component {
@@ -79,6 +80,8 @@ class App extends Component {
           <ProtectedRoute exact path="/" component={Home} />
           <ProtectedRoute exact path="/my-profile" component={MyProfile} />
           <ProtectedRoute exact path="/users/:id" component={UserProfile} />
+          <Route exact path="/not-found" component={NotFound} />
+          <Redirect to="/not-found" />
         </Switch>
       </SearchContext.Provider>
     )

@@ -1,4 +1,5 @@
 import {Switch, Route, Redirect} from 'react-router-dom'
+import Cookies from 'js-cookie'
 import {Component} from 'react'
 import LoginForm from './components/LoginForm'
 import Home from './components/Home'
@@ -12,7 +13,7 @@ import './App.css'
 class App extends Component {
   state = {
     searchText: '',
-    postsData: [],
+    searchPosts: [],
     isSearchButtonClicked: false,
     setLoading: false,
     isFailure: false,
@@ -47,13 +48,52 @@ class App extends Component {
   }
 
   setPostsData = updatedData => {
-    this.setState({postsData: updatedData})
+    this.setState({searchPosts: updatedData})
+  }
+
+  initiateSearchPostLikeApi = async (postId, likeStatus) => {
+    const {searchPosts} = this.state
+    const jwtToken = Cookies.get('jwt_token')
+    const likeDetails = {
+      like_status: likeStatus,
+    }
+    const apiUrl = `https://apis.ccbp.in/insta-share/posts/${postId}/like`
+    const options = {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
+      method: 'POST',
+      body: JSON.stringify(likeDetails),
+    }
+
+    const response = await fetch(apiUrl, options)
+    const data = await response.json()
+    let userPostsData = searchPosts
+    userPostsData = userPostsData.map(eachObject => {
+      if (eachObject.postId === postId && likeStatus) {
+        return {
+          ...eachObject,
+          message: data.message,
+          likesCount: eachObject.likesCount + 1,
+        }
+      }
+      if (eachObject.postId === postId && !likeStatus) {
+        return {
+          ...eachObject,
+          message: data.message,
+          likesCount: eachObject.likesCount - 1,
+        }
+      }
+
+      return eachObject
+    })
+    this.setState({searchPosts: userPostsData})
   }
 
   render() {
     const {
       searchText,
-      postsData,
+      searchPosts,
       isSearchButtonClicked,
       setLoading,
       isFailure,
@@ -66,13 +106,14 @@ class App extends Component {
           upDateSearchText: this.upDateSearchText,
           resetSearchButton: this.resetSearchButton,
           setLoading,
-          postsData,
+          searchPosts,
           setSearchButton: this.setSearchButton,
           updateLoading: this.updateLoading,
           setPostsData: this.setPostsData,
           setFailure: this.setFailure,
           resetFailure: this.resetFailure,
           isFailure,
+          initiateSearchPostLikeApi: this.initiateSearchPostLikeApi,
         }}
       >
         <Switch>

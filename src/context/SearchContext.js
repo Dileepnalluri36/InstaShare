@@ -13,6 +13,7 @@ const CartContext = React.createContext({
   resetSearchButton: () => {},
   postsData: [],
   setPostsData: () => {},
+  initiateSearchPostLikeApi: () => {},
 })
 
 export default CartContext

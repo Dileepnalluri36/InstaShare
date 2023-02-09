@@ -29,9 +29,33 @@ const Header = props => {
         const showSearchBar = () => {
           setShowSearchBar(!searchBarVisible)
         }
-        const changeSearchText = event => {
+        const changeSearchText = async event => {
           upDateSearchText(event.target.value)
           resetSearchButton()
+          const jwtToken = Cookies.get('jwt_token')
+          const apiUrl = `https://apis.ccbp.in/insta-share/posts?search=${event.target.value}`
+          const options = {
+            headers: {
+              Authorization: `Bearer ${jwtToken}`,
+            },
+            method: 'GET',
+          }
+          const response = await fetch(apiUrl, options)
+          const data = await response.json()
+          if (response.ok === true) {
+            const updatedData = data.posts.map(eachPost => ({
+              postId: eachPost.post_id,
+              createdAt: eachPost.created_at,
+              likesCount: eachPost.likes_count,
+              comments: eachPost.comments,
+              userId: eachPost.user_id,
+              profilePic: eachPost.profile_pic,
+              userName: eachPost.user_name,
+              postCaption: eachPost.post_details.caption,
+              postImage: eachPost.post_details.image_url,
+            }))
+            setPostsData(updatedData)
+          }
         }
         const onClickLogout = () => {
           const {history} = props
@@ -51,6 +75,7 @@ const Header = props => {
           }
           const response = await fetch(apiUrl, options)
           const data = await response.json()
+          console.log(data)
           if (response.ok === true) {
             const updatedData = data.posts.map(eachPost => ({
               postId: eachPost.post_id,

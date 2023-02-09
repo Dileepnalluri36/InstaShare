@@ -6,6 +6,7 @@ import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 import SearchContext from '../../context/SearchContext'
 import UserPostItem from '../UserPostItem'
+import UserPostSearchItem from '../UserPostSearchItem'
 
 const apiStatusConstants = {
   initial: 'INITIAL',
@@ -18,6 +19,16 @@ class UserPosts extends Component {
   state = {
     apiStatus: apiStatusConstants.initial,
     postsData: [],
+    searchPosts: this.props,
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    if (props.searchPosts !== state.searchPosts) {
+      return {
+        searchPosts: props.searchPosts,
+      }
+    }
+    return null
   }
 
   componentDidMount() {
@@ -110,8 +121,6 @@ class UserPosts extends Component {
 
     const response = await fetch(apiUrl, options)
     const data = await response.json()
-    const postItem = postsData.find(eachPost => postId === eachPost.postId)
-    postItem.message = data.message
     let userPostsData = postsData
     userPostsData = userPostsData.map(eachObject => {
       if (eachObject.postId === postId && likeStatus) {
@@ -150,27 +159,27 @@ class UserPosts extends Component {
     )
   }
 
-  renderSearchPosts = postsData => (
-    <ul className="posts_list_container">
-      <h1 className="searchResultsHeading">Search Results</h1>
-      {postsData.map(eachPost => (
-        <UserPostItem
-          initiatePostLikeApi={this.initiatePostLikeApi}
-          eachPost={eachPost}
-          key={eachPost.postId}
-        />
-      ))}
-    </ul>
-  )
+  renderSearchPosts = () => {
+    const {searchPosts} = this.state
+    return (
+      <ul className="posts_list_container">
+        <h1 className="searchResultsHeading">Search Results</h1>
+        {searchPosts.map(eachPost => (
+          <UserPostSearchItem
+            initiateSearchPostLikeApi={this.initiateSearchPostLikeApi}
+            eachPost={eachPost}
+            key={eachPost.postId}
+          />
+        ))}
+      </ul>
+    )
+  }
 
-  renderConditionForSearchResults = (
-    isFailure,
-    isSearchButtonClicked,
-    postsData,
-  ) => {
+  renderConditionForSearchResults = (isFailure, isSearchButtonClicked) => {
+    const {searchPosts} = this.state
     if (!isFailure && isSearchButtonClicked) {
-      if (postsData.length > 0) {
-        return this.renderSearchPosts(postsData)
+      if (searchPosts.length > 0) {
+        return this.renderSearchPosts()
       }
       return this.noSearchResults()
     }
@@ -199,7 +208,6 @@ class UserPosts extends Component {
             searchText,
             isSearchButtonClicked,
             setLoading,
-            postsData,
             isFailure,
           } = value
           return (
@@ -209,7 +217,6 @@ class UserPosts extends Component {
               {this.renderConditionForSearchResults(
                 isFailure,
                 isSearchButtonClicked,
-                postsData,
               )}
               {isFailure && this.renderFailureView()}
             </div>

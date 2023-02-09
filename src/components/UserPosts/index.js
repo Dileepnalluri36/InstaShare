@@ -2,6 +2,7 @@
 /* eslint-disable react/no-unknown-property */
 import './index.css'
 import Cookies from 'js-cookie'
+import {Link} from 'react-router-dom'
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 import {BsHeart} from 'react-icons/bs'
@@ -112,7 +113,9 @@ class UserPosts extends Component {
                   alt="post author profile"
                   className="profile_pic"
                 />
-                <p className="profileName">{eachPost.userName}</p>
+                <Link to={`/users/${eachPost.userId}`}>
+                  <p className="profileName">{eachPost.userName}</p>
+                </Link>
               </div>
               <img src={eachPost.postImage} alt="post" className="postImage" />
               <div className="social_div">
@@ -174,7 +177,9 @@ class UserPosts extends Component {
                   alt="post author profile"
                   className="profile_pic"
                 />
-                <p className="profileName">{eachPost.userName}</p>
+                <Link to={`/users/${eachPost.userId}`}>
+                  <p className="profileName">{eachPost.userName}</p>
+                </Link>
               </div>
               <img src={eachPost.postImage} alt="post" className="postImage" />
               <div className="social_div">

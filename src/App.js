@@ -5,6 +5,7 @@ import Home from './components/Home'
 import SearchContext from './context/SearchContext'
 import ProtectedRoute from './components/ProtectedRoute'
 import MyProfile from './components/MyProfile'
+import UserProfile from './components/UserProfile'
 import './App.css'
 
 class App extends Component {
@@ -77,6 +78,7 @@ class App extends Component {
           <Route exact path="/login" component={LoginForm} />
           <ProtectedRoute exact path="/" component={Home} />
           <ProtectedRoute exact path="/my-profile" component={MyProfile} />
+          <ProtectedRoute exact path="/users/:id" component={UserProfile} />
         </Switch>
       </SearchContext.Provider>
     )

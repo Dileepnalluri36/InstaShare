@@ -146,6 +146,7 @@ class UserPosts extends Component {
 
   renderSuccessView = () => {
     const {postsData} = this.state
+    console.log(postsData)
     return (
       <ul className="posts_list_container">
         {postsData.map(eachPost => (
@@ -210,6 +211,7 @@ class UserPosts extends Component {
             setLoading,
             isFailure,
           } = value
+
           return (
             <div className="posts-container">
               {searchText === '' && this.renderUserPosts()}

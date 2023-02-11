@@ -75,9 +75,11 @@ const UserPostSearchItem = props => (
           <ul className="comments_container">
             {updatedComments.map(eachComment => (
               <li className="comment_item" key={eachComment.commentUserId}>
-                <span className="commentUSerName">
-                  {eachComment.commentUserName}
-                </span>
+                <Link to={`/users/${eachComment.commentUserId}`}>
+                  <span className="commentUSerName">
+                    {eachComment.commentUserName}
+                  </span>
+                </Link>
                 <p className="comment">{eachComment.comment}</p>
               </li>
             ))}

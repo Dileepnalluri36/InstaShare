@@ -25,7 +25,7 @@ class MyProfile extends Component {
     const {match} = this.props
     const {params} = match
     const {id} = params
-
+    console.log(match)
     this.setState({apiStatus: apiStatusConstants.inProgress})
     const jwtToken = Cookies.get('jwt_token')
     const apiUrl = `https://apis.ccbp.in/insta-share/users/${id}`

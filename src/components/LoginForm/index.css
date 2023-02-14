@@ -9,8 +9,8 @@
   }
 
   .login-website-desktop-img {
-    height: 373px;
-    width: 582px;
+    height: 300px;
+    width: 50%;
     left: 160px;
     top: 326px;
     border-radius: 0px;
@@ -112,6 +112,12 @@
     display: none;
   }
 
+  .login-container {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+  }
+
   .website-title {
     font-style: normal;
     font-weight: 500;
@@ -127,7 +133,7 @@
   .form-container {
     font-family: Roboto;
     display: flex;
-    min-height: 100vh;
+    min-height: 70vh;
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -135,6 +141,7 @@
     border-radius: 8px;
     width: 100%;
     max-width: 350px;
+    margin: auto;
     box-shadow: 0px 8px 40px 0px #07070714;
   }
 
